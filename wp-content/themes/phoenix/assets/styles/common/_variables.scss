@@ -1,0 +1,50 @@
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+// Fonts
+$pressura: (
+  "bold:": "GT Pressura Bold",
+  "regular": "GT Pressura Regular"
+);
+$gotham:  "Gotham SSm A", "Gotham SSm B";
+
+$font-family-headline: map-get($pressura, "regular");
+$font-family-body: $gotham;
+
+// colors
+$green: #005e20;
+$light-green: #468c4c;
+$white: #FFFFFF;
+$black: #000000;
+$grey: #787777;
+
+// Theme Map
+$themes: (
+  horizon: (
+    'primary': $green,
+    'secondary': $light-green,
+    'light': $white,
+    'dark': $black,
+    'grey': $grey
+  ),
+  phoenix: (
+    'primary': #F00,
+    'secondary': #FF0,
+    'light': $white,
+    'dark': $black,
+    'grey': $grey
+
+  )
+) !default;
+
+
+
+// Z-INDEX
+$z-layers: (
+  "modal":            9001,
+  "layer":       8000,
+  "default":            1,
+  "below":             -1,
+  "bottomless-pit": -9000
+);

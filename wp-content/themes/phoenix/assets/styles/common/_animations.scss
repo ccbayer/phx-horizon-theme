@@ -1,0 +1,78 @@
+.slide-down {
+  animation: .5s ease-in-out slide-down forwards;
+}
+
+.slide-up {
+  animation: .5s ease-in-out slide-up forwards;
+}
+
+.slide-up-30 {
+  animation: .5s ease-in-out slide-up-30 forwards;
+}
+
+.fade-in {
+  opacity: 0;
+  animation: .5s ease-in-out fade-in forwards;
+}
+
+
+// DELAYS
+$seconds: 0;
+@while ($seconds < 6) {
+  .delay-#{$seconds} {
+    animation-delay: #{$seconds}s;
+  }
+  .delay-#{$seconds}-point-25 {
+    animation-delay: $seconds + .25s;
+  }
+  .delay-#{$seconds}-point-5 {
+    animation-delay: $seconds+.5s;
+  }
+  .delay-#{$seconds}-point-75 {
+    animation-delay: $seconds+.75s;
+  }
+  $seconds: $seconds+1;
+}
+
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    top: -90px;
+  }
+  100% {
+    opacity: 1;
+    top: 0px;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    bottom: -90px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 0px;
+  }
+}
+
+@keyframes slide-up-30 {
+  0% {
+    opacity: 0;
+    bottom: -90px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 30px;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

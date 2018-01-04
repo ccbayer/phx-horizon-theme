@@ -1,0 +1,18 @@
+.btn {
+  @include color('dark');
+  background-color: transparent;
+  &.btn-light {
+    @include color('light');
+    border-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+  &.btn-dark {
+    @include color('dark');
+    border-color: transparent;
+    &:hover {
+      background-color: transparent;
+    }
+  }
+}

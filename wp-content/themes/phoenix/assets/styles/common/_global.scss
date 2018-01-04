@@ -1,0 +1,113 @@
+body {
+  @include color('dark');
+}
+
+$section-padding: 7.5rem;
+section {
+  padding-top: $section-padding;
+  padding-bottom: $section-padding;
+}
+
+.animated {
+  //height: 100vh;
+  &.animated-up {
+    transition: opacity 1.55s cubic-bezier(.23,1,.32,1) 250ms,transform 1.55s cubic-bezier(.23,1,.32,1) 250ms;
+    &.off {
+      opacity: 0;
+      transform: translate3d(0,20%,0);
+    }
+    &.on {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+  }
+  &.animated-left {
+    transition: opacity 1.55s cubic-bezier(.23,1,.32,1) 250ms,transform 1.55s cubic-bezier(.23,1,.32,1) 250ms;
+    &.off {
+      opacity: 0;
+      transform: translate3d(-50%,0,0);
+    }
+    &.on {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+  }
+  &.animated-right {
+    transition: opacity 1.55s cubic-bezier(.23,1,.32,1) 250ms,transform 1.55s cubic-bezier(.23,1,.32,1) 250ms;
+    &.off {
+      opacity: 0;
+      transform: translate3d(150%,0,0);
+    }
+    &.on {
+      opacity: 1;
+      transform: translate3d(0,0,0);
+    }
+  }
+}
+
+a {
+  @include color('primary');
+}
+
+.background-primary {
+  @include background-color('primary');
+}
+.background-secondary {
+  @include background-color('secondary');
+}
+
+
+/*
+** FancyHover Links
+*/
+a.fancyHover {
+  position: relative;
+  text-decoration: none;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 2px;
+    transform: scaleX(0);
+    animation: fancyHoverOut .8s 0s 1 cubic-bezier(.645, .045, .355, 1) both;
+    width: 100%;
+
+  }
+  &:hover {
+    text-decoration: none;
+    &::after {
+      animation: fancyHover .8s 0s 1 cubic-bezier(.645, .045, .355, 1) both;
+    }
+  }
+}
+@keyframes fancyHover {
+    0% {
+        transform-origin: left center;
+        transform: scaleX(0)
+    }
+    100% {
+        transform-origin: left center;
+        transform: scaleX(1)
+    }
+    // }
+    // 50% {
+    //     transform-origin: right center;
+    //     transform: scaleX(1)
+    // }
+    // 100% {
+    //     transform-origin: right center;
+    //     transform: scaleX(0)
+    // }
+}
+
+@keyframes fancyHoverOut {
+    0% {
+        transform-origin: left center;
+        transform: scaleX(1)
+    }
+    100% {
+        transform-origin: left center;
+        transform: scaleX(0)
+    }
+}

@@ -1,0 +1,117 @@
+@function getRemFromPix($px) {
+  @return $px / $font-rem-size-base + rem; // left as a function so can be used to set variables if required.
+}
+
+@mixin rem($px) {
+  // input: font-size in px
+  // output: font-size in rem based on $font-rem-size-base
+  font-size: getRemFromPix($px);
+}
+
+
+@mixin objFit($fit: cover, $width: 100%, $height: 100%, $posX: center, $posY: center) {
+    object-fit: $fit;
+    width: $width;
+    height: $height;
+    object-position: $posX $posY;
+    // polyfill:
+    font-family: 'object-fit: #{$fit}; object-position: #{$posX} #{$posY}';
+
+}
+
+@mixin image-wrapper($col: sm, $fill: fill) {
+  @include make-col(12);
+  @include media-breakpoint-up($col) {
+    border: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1;
+  }
+  img {
+    @include objFit($fill);
+  }
+}
+
+
+// z-index
+@function z($layer) {
+  @return map-get($z-layers, $layer);
+}
+
+/////////////
+/* THEMES */
+///////////
+
+/// Themify mixin
+/// @access private
+/// @author Hugo Giraudel
+/// @param {String} $property - Property to themify
+/// @param {String} $key - Key color to use from theme
+/// @param {Map} $themes [$themes] - Map of themes to use
+
+@mixin themify-pseudo($property, $key, $themes: $themes) {
+  // Iterate over the themes
+  @each $theme, $colors in $themes {
+    // Create a selector (e.g. `.media.theme-unicorn, .theme-unicorn .media`)
+    .theme-#{$theme} & {
+      // Output the declaration
+      #{$property}: map-get($colors, $key);
+    }
+  }
+}
+@mixin themify($property, $key, $themes: $themes) {
+  // Iterate over the themes
+  @each $theme, $colors in $themes {
+    // Create a selector (e.g. `.media.theme-unicorn, .theme-unicorn .media`)
+    &.theme-#{$theme},
+    .theme-#{$theme} & {
+      // Output the declaration
+      #{$property}: map-get($colors, $key);
+    }
+  }
+}
+
+@mixin themify-gradient($property, $key, $direction, $themes: $themes) {
+  // Iterate over the themes
+  @each $theme, $colors in $themes {
+    // Create a selector (e.g. `.media.theme-unicorn, .theme-unicorn .media`)
+    &.theme-#{$theme},
+    .theme-#{$theme} & {
+      // Output the declaration
+      $color: map-get($colors, $key);
+      #{$property}: linear-gradient(#{$direction}, $color 50%, transparent 50%);
+    }
+  }
+}
+
+/// Shorthand to themify color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin color($arguments...) {
+  @include themify('color', $arguments...);
+}
+/// Shorthand to themify border-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin border-color($arguments...) {
+  @include themify('border-color', $arguments...);
+}
+
+/// Shorthand to themify background-color through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin background-color($arguments...) {
+  @include themify('background-color', $arguments...);
+}
+@mixin background-color-pseudo($arguments...) {
+  @include themify-pseudo('background-color', $arguments...);
+}
+
+/// Shorthand to themify background-gradient through `themify` mixin
+/// @access public
+/// @see {mixin} themify
+@mixin background-gradient($arguments...) {
+    @include themify-gradient('background', $arguments...);
+}

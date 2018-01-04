@@ -1,0 +1,43 @@
+
+// BOOTSTRAP OVERRIDES
+
+// Bootstrap Settings
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 960px,
+  lg: 992px,
+  xl: 1170px
+);
+
+// base overrides
+$enable-rounded:            false;
+$enable-shadows:            false;
+$enable-gradients:          false;
+
+// Colors
+$body-bg: $white;
+
+// Typography
+// $font-family-sans-serif: 'Interstate', sans-serif;
+$font-rem-size-base: 16; //16px
+
+$h1-font-size: 6.25rem;
+$h2-font-size: 3.125rem;
+$h3-font-size: 1.5625rem;
+
+// buttons:
+$btn-border-radius: 0;
+$input-btn-padding-y: 1rem;
+$input-btn-padding-x: 5rem;
+$btn-font-weight: bold;
+$btn-box-shadow: none;
+$input-btn-line-height: 1;

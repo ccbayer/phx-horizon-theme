@@ -1,0 +1,54 @@
+.product-module {
+  p {
+    @extend p.primary;
+  }
+  // version a
+  &.-version-a {
+    .img-primary {
+      margin-bottom: 4.75rem;
+    }
+    h2 {
+      @include color('primary');
+      margin-bottom: 5.65rem;
+    }
+    .cta {
+      a {
+        @include color('dark');
+        &::after {
+          @include background-color-pseudo('dark');
+        }
+        &:hover {
+          @include color('dark');
+          &::after {
+            @include background-color-pseudo('dark');
+          }
+        }
+      }
+    }
+  }
+  // version b
+  &.-version-b {
+    .container {
+      padding: 5.65rem 0;
+      @include background-color('secondary');
+      @include color('light');
+      .img-primary {
+        margin: 3.75rem auto;
+      }
+      .cta {
+        a {
+          @include color('light');
+          &::after {
+            @include background-color-pseudo('light');
+          }
+          &:hover {
+            @include color('light');
+            &::after {
+              @include background-color-pseudo('light');
+            }
+          }
+        }
+      }
+    }
+  }
+}

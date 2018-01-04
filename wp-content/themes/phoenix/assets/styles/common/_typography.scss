@@ -1,0 +1,81 @@
+h1 {
+  @include rem(100);
+  font-family: $font-family-headline;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  .h3 {
+    font-family: $font-family-headline;
+    font-weight: 400;
+  }
+}
+
+h2,
+.h2 {
+  @include rem(50);
+  font-family: $font-family-headline;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+h3,
+.h3 { // subhead 1
+  @include rem(25);
+  font-family: $font-family-headline;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+}
+
+h4 {
+  font-family: $font-family-headline;
+}
+
+p {
+  @include rem(15);
+  font-family: $font-family-body;
+  line-height: (25/15);
+  letter-spacing: .1em;
+  font-weight: 400;
+  font-style: normal;
+  &.primary {
+    @include rem(25);
+    line-height: (35/25);
+  }
+  &.secondary {
+    @include rem(18);
+  }
+  &.tertiary {
+    @include rem(25);
+    line-height: (35/25);
+    letter-spacing: normal;
+  }
+}
+
+// primary cta
+a.btn-primary {
+  @include rem(25);
+  font: {
+    family: $font-family-body;
+    style: normal;
+    weight: 400;
+  }
+  text-transform: uppercase;
+  letter-spacing: .2em;
+}
+
+
+// fonts:
+@font-face {
+  font-family: "GT Pressura Bold";
+  src: url('../fonts/GT-Pressura-Bold.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/GT-Pressura-Bold?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/GT-Pressura-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/GT-Pressura-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+
+@font-face {
+  font-family: "GT Pressura Regular";
+  src: url('../fonts/GT-Pressura-Regular.eot'); /* IE9 Compat Modes */
+  src: url('../fonts/GT-Pressura-Regular?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../fonts/GT-Pressura-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../fonts/GT-Pressura-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+}

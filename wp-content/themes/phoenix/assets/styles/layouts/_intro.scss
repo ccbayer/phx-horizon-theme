@@ -1,0 +1,18 @@
+.intro {
+  h2 {
+    @include color('primary');
+    margin-bottom: 2.75rem;
+  }
+  .intro-image {
+    margin: 3.125rem auto .5rem auto;
+  }
+  .content-block {
+    margin-bottom: 5rem;
+    &.offset {
+      padding-top: 3.125rem;
+    }
+    p {
+      @extend p.secondary;
+    }
+  }
+}

@@ -1,0 +1,25 @@
+.layer-1 {
+  z-index: z("default");
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: {
+    repeat: no-repeat;
+    size: cover;
+    position: center center;
+  }
+}
+
+.layer-2 {
+  @include background-color('light');
+  position: relative;
+  margin-top: 100vh;
+  z-index: z("layer");
+  padding-top: 7.5rem;
+  overflow-y: hidden;
+}
