@@ -3,7 +3,7 @@
  Staging: staging server 
  Master: prod server
  
- 
+
 # Deployment
 
 1. Add a new remote for the `production` server:
@@ -19,6 +19,8 @@ git push production master
 ```
 
 This will prompt you to log in with the `master_zkbpjtktxs` user; get the password from @ccbayer.
+
+A git hook will run the front-end build and copy the built theme to the correct live directory.
 
 note that the root dir is:
 `/home/master/applications/aqqtkahyua/public_html/`
