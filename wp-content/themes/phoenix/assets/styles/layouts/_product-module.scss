@@ -2,6 +2,14 @@
   p {
     @extend p.primary;
   }
+  &.-less-padding {
+    padding-top: 3rem;
+  }
+  img {
+    @include media-breakpoint-down(lg) {
+      width: 100%;
+    }
+  }
   // version a
   &.-version-a {
     .img-primary {

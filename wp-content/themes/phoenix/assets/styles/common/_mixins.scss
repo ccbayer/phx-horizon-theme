@@ -34,6 +34,52 @@
   }
 }
 
+// body copy
+@mixin body($which: default) {
+  font-family: $font-family-body;
+  font-weight: 400;
+  font-style: normal;
+  @if $which == primary {
+    @include rem(18);
+    line-height: (35/25);
+    @include media-breakpoint-up(sm) {
+      @include rem(25);
+    }
+  } @else if $which == secondary {
+    @include rem(16);
+    @include media-breakpoint-up(sm) {
+      @include rem(18);
+    }
+  } @else if $which == tertiary {
+    @include rem(18);
+    line-height: (35/25);
+    letter-spacing: normal;
+    @include media-breakpoint-up(sm) {
+      @include rem(25);
+    }
+  } @else if $which == default {
+    @include rem(12);
+    line-height: (25/15);
+    letter-spacing: .1em;
+    @include media-breakpoint-up(sm) {
+      @include rem(15);
+    }
+  }
+}
+
+
+// BODY COPY BUILDER
+
+@mixin body-copy($font-size-px, $line-height, $font-family: $font-family-body, $font-weight: 400, $font-style: normal, $letter-spacing: 1) {
+  @include rem($font-size-px);
+  line-height: $line-height;
+  font: {
+    family: $font-family;
+    weight: $font-weight;
+    style: $font-style;
+  }
+  letter-spacing:  $letter-spacing;
+}
 
 // z-index
 @function z($layer) {

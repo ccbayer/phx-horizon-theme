@@ -1,6 +1,17 @@
 .side-by-side {
 //  height: 100vh;
-  @include background-gradient('secondary', 'to right');
+  position: relative;
+  .bg {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    @include background-gradient('secondary', 'to right');
+    @include media-breakpoint-down(md) {
+      background-image: none !important;
+      @include background-color('secondary');
+    }
+  }
   .container {
     height: 100%;
     .row {
@@ -11,7 +22,11 @@
     @include color('light');
     padding-right: 3.75rem;
     h2 {
+      position: relative;
       margin-bottom: 5.65rem;
+      @include media-breakpoint-down(md) {
+        text-align: center;
+      }
     }
     p {
       @extend p.primary;
@@ -31,5 +46,13 @@
   }
   &.right-to-left {
     @include background-gradient('secondary', 'to left');
+  }
+  .image-container {
+    &.left {
+      padding-left: 2.5rem;
+      @include media-breakpoint-down(md) {
+        width: 75%;
+      }
+    }
   }
 }

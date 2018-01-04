@@ -12,6 +12,11 @@
       ],
       "main": true
     },
+    "editor-styles.css": {
+      "files": [
+        "styles/editor-styles.scss"
+      ]
+    },
     "customizer.js": {
       "files": [
         "scripts/customizer.js"

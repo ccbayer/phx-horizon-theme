@@ -24,9 +24,13 @@
 
 // components
 @import "layouts/header";
+@import "layouts/nav";
 @import "layouts/layers";
 @import "layouts/hero";
 @import "layouts/intro";
 @import "layouts/side-by-side";
 @import "layouts/product-module";
 @import "layouts/product-selector";
+@import "layouts/generic-template";
+@import "layouts/cart-overlay";
+@import "layouts/woocommerce";
