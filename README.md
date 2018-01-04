@@ -24,3 +24,7 @@ A git hook will run the front-end build and copy the built theme to the correct 
 
 note that the root dir is:
 `/home/master/applications/aqqtkahyua/public_html/`
+
+# To Do
+
+Test the build!
