@@ -15,4 +15,4 @@ git push production master
 This will prompt you to log in with the `master_zkbpjtktxs` user; get the password from @ccbayer.
 
 note that the root dir is:
-` /home/master/applications/aqqtkahyua/public_html/`
+`/home/master/applications/aqqtkahyua/public_html/`
