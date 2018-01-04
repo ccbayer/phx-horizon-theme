@@ -7,14 +7,32 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-beta",
     "popper.js": "^1.12.3",
-    "waypoints": "^4.0.1"
+    "bootstrap": "git://github.com/twbs/bootstrap.git#v4.0.0-beta",
+    "waypoints": "^4.0.1",
+    "lazysizes": "^3.0.0",
+    "gsap": "^1.20.3",
+    "scrollmagic": "^2.0.5",
+    "handlebars": "^4.0.11"
   },
   "overrides": {
     "waypoints": {
       "main": [
         "./lib/jquery.waypoints.js"
+      ]
+    },
+    "lazysizes": {
+      "main": [
+        "./lazysizes.min.js",
+        "./plugins/unveilhooks/ls.unveilhooks.min.js"
+      ]
+    },
+    "scrollmagic": {
+      "main": [
+        "./scrollmagic/uncompressed/ScrollMagic.js",
+        "./scrollmagic/uncompressed/plugins/animation.gsap.js",
+        "./scrollmagic/uncompressed/plugins/jquery.ScrollMagic.js",
+        "./scrollmagic/uncompressed/plugins/debug.addIndicators.js"
       ]
     }
   }
