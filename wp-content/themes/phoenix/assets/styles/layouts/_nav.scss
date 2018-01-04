@@ -1,0 +1,106 @@
+.nav-col,
+.brand-col {
+  width: 50%;
+}
+
+.brand-col {
+  @include media-breakpoint-down(md) {
+    padding-left: 5px;
+  }
+}
+
+nav.nav-primary {
+  margin: -18px auto 0 auto;
+  width: 100%;
+  position: relative;
+  @include media-breakpoint-down(md) {
+    position: absolute;
+    left: 0;
+    right: 0;
+  }
+  .hamburger {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    left: 50%;
+    margin-left: -20px;
+    top: -14px;
+    opacity: 1;
+    cursor: pointer;
+  }
+  .hamburger span {
+    display: block;
+    margin: 0 auto 5px auto;
+    width: 33px;
+    height: 4px;
+    position: relative;
+    @include background-color('light');
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 4px 0px;
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0), background 0.5s cubic-bezier(0.77,0.2,0.05,1.0), opacity 0.55s ease;
+    &:first-child {
+      transform-origin: 0% 0%;
+    }
+    &:nth-last-child(2) {
+        transform-origin: 0% 100%;
+    }
+  }
+  .hamburger.on span {
+    opacity: 1;
+    transform: rotate(45deg) translate(-3px, -19px);
+  }
+ .hamburger.on span:nth-last-child(3) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  .hamburger.on span:nth-last-child(2) {
+    transform: rotate(-45deg) translate(0, 17px);
+  }
+  .hamburger.on ~ .menu-main-hamburger-menu-container
+  {
+      transform: translate(0, 40px);
+      opacity: 1;
+      display: block;
+  }
+  .menu-main-hamburger-menu-container {
+    display: none;
+    transform-origin: 0% 0%;
+    opacity: 0;
+    transform: translate(0, -1000px);
+    transition: all 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+  }
+  ul.nav {
+    @include background-color('primary');
+    list-style-type: none;
+    li {
+      display: block;
+      text-align: center;
+      width: 100%;
+      float: none;
+      padding: 1.5rem 0;
+      a {
+        @include color('light');
+        @include rem(50);
+        @extend .fancyHover;
+        font-weight: 100;
+        letter-spacing: .1em;
+        font-family: $font-family-headline;
+        text-transform: uppercase;
+        &::after {
+          @include background-color-pseudo('light');
+        }
+        &:hover {
+          @include color('light');
+          &::after {
+            @include background-color-pseudo('light');
+          }
+        }
+        @include media-breakpoint-down(md) {
+          @include rem(25);
+        }
+      }
+    }
+  }
+}

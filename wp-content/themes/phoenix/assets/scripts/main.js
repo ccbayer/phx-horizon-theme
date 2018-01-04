@@ -35,6 +35,280 @@
           offset: '80%'
         });
 
+        $('.hamburger').on('click', function(){
+          $(this).toggleClass('on');
+        });
+
+        // selector
+        $('.selector-list li a').on('click', function(event){
+          event.preventDefault();
+
+          var
+            $this = $(this),
+            target = $this.attr('href')
+          ;
+
+          $('.product-container').addClass('hide');
+          $(target).removeClass('hide');
+          $('.selector-list li').removeClass('selected');
+          $this.parent('li').addClass('selected');
+        });
+
+        // cart
+        $('.cart-count, .hide-cart-overlay').on('click', function(event) {
+          event.preventDefault();
+          $('.cart-overlay').toggleClass('on');
+        });
+
+        // updates TOTAL item count
+        function updateItemCount(count) {
+          if(count === 'null') {
+            count = 0;
+          }
+          var items = count === 1 ? ' item' : ' items';
+          $('.cart-count').html(count);
+          $('.cart-overlay .count').html(count + items);
+          if(count === 0) {
+            $('.cart-overlay h4').removeClass('d-none');
+          }
+        }
+        //woocommerce ajax functions
+
+        // REMOVE ENTIRE ITEM FROM CART USING REMOVE FROM CART BUTTON
+        $('.remove-from-cart').on('click', function (event){
+          event.preventDefault();
+          var
+            options = {
+              action: 'product_remove',
+              product_id: $(this).data('product-id')
+          };
+          $.ajax({
+              type: 'POST',
+              dataType: 'json',
+              url: phx.ajax_url,
+              data: options,
+              success: function(data) {
+                $('#cart-overlay-' + options.product_id).fadeOut();
+                updateItemCount(data);
+              }
+          });
+      });
+
+      // ADD OR SUBTRACT ITEM FROM CART ONE AT A TIME
+      $('.ajax-change-quantity').on('click', function (event){
+          event.preventDefault();
+          var
+            options = {
+              action: 'product_change_quantity',
+              dir: $(this).data('dir'),
+              product_id: $(this).data('product-id')
+          };
+
+          $.ajax({
+              type: 'POST',
+              dataType: 'json',
+              url: phx.ajax_url,
+              data: options,
+              success: function(data){
+                if(data.success) {
+                  updateItemCount(data.data.total);
+                  if(data.data.quantity > 0) {
+                    // updates quantity inline
+                    $('#cart-overlay-' + options.product_id + ' .quantity').html(data.data.quantity);
+                  } else {
+                    $('#cart-overlay-' + options.product_id).fadeOut();
+                  }
+                } else {
+                  console.log('error updating cart');
+                }
+              }
+          });
+      });
+
+
+
+      /*
+      Placeholder:
+      Dynamic Ajax Cart Updating
+      Requires more work
+
+      function rebuildCart(cart) {
+        var output = '';
+        for(var i = 0; i < cart.length; i++) {
+          var template = Handlebars.templates['product-template'];
+          output = output + template(cart[i]);
+        }
+        $('.products-wrapper').html(output);
+      }
+
+
+      $('.ajax_add_to_cart').on('click', function() {
+        var count = $('.cart-count').html();
+        count = parseInt(count, 10) + 1;
+        updateItemCount(count);
+        var options = {
+          action: 'get_cart_contents'
+        };
+
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: phx.ajax_url,
+            data: options,
+            success: function(data){
+              rebuildCart(data.data.cart);
+            },
+            error: function(errorThrown){
+              console.log(errorThrown);
+            }
+        });
+      });
+      */
+
+
+
+      // fancy hover
+      $('.fancyHover, #menu-main-hamburger-menu a').on('hover', function() {
+        $(this).addClass('fh-hovered');
+      });
+
+        // nav / hero:
+        // only delay slide-in if we are scrolled off the top.
+        // tweens
+        if($('body').hasClass('home')) {
+          var heroTl = new TimelineMax();
+          heroTl.add(TweenLite.fromTo($('#header'), 0.5,
+          {
+            top: $('#header').outerHeight() * -1,
+            opacity: 0
+          },
+          {
+            top: 0,
+            opacity: 1
+          }));
+
+          heroTl.add(TweenLite.fromTo($('#header .logo'), 0.25,
+          {
+            opacity: 0
+          },
+          {
+            opacity: 1
+          }));
+
+          var hero = new ScrollMagic.Controller();
+          var header = new ScrollMagic.Scene({
+            offset: $('#header').outerHeight()
+          })
+          .setTween(heroTl)
+          .addTo(hero);
+      }
+        // Dynamically set up animations
+
+        $('section[data-animation="true"]').each(function(){
+
+          var
+            $parent = $(this),
+            $anim_els = $(this).find('[data-animate="true"]')
+          ;
+          // loop over each element and add to the timeline
+          $anim_els.each(function(){
+            var indicator = false;
+
+            if($(this).hasClass('side-by-side-img')) {
+              indicator = true;
+            }
+
+            var ctrl = new ScrollMagic.Controller({addIndicators: false});
+
+            var
+              tl = new TimelineMax(),
+              tl2 = new TimelineMax(),
+              tl_trigger_hook = parseFloat($parent.data('offset')),
+              tl2_trigger_hook = parseFloat($parent.data('offset')),
+              duration = 300,
+              $this = $(this)
+            ;
+            if(typeof($this.data('animations')) !== 'undefined') {
+              var d = $this.data('animations');
+              for(var i = 0; i < d.length; i ++) {
+                if(!d[i].attachToScroll) {
+                  if(d[i].type === "fromTo") {
+                    if(d[i].triggerHook) {
+                      tl_trigger_hook = parseFloat(d[i].triggerHook);
+                    }
+                    tl.add(TweenLite.fromTo($this, parseFloat(d[i].duration), d[i].from, d[i].to));
+                  }
+                } else {
+                  if(d[i].triggerHook) {
+                    tl2_trigger_hook = parseFloat(d[i].triggerHook);
+                  }
+                  tl2.add(TweenLite.to($this, parseFloat(d[i].duration), d[i].to));
+                }
+                // set distance
+                if(d[i].distance) {
+                  if(d[i].distance === "-1") {
+                    // height of parent
+                    duration = $parent.outerHeight();
+                  } else {
+                    duration = parseFloat(d[i].distance);
+                  }
+                }
+              }
+            }
+            var noScroll = new ScrollMagic.Scene({
+              triggerElement: $this[0],
+              triggerHook: tl_trigger_hook,
+            })
+            .setTween(tl)
+            .addTo(ctrl);
+
+
+            // attach the timeline to the scene
+            var yesScroll = new ScrollMagic.Scene({
+              triggerElement: $this[0],
+              triggerHook: tl2_trigger_hook,
+              duration: duration
+            })
+            .setTween(tl2)
+            .addTo(ctrl);
+
+          });
+
+
+      });
+
+      // rotation animations; jank free?
+            ;(function() {
+          var throttle = function(type, name) {
+              var obj = obj || window;
+              var running = false;
+              var func = function() {
+                  if (running) { return; }
+                  running = true;
+                  requestAnimationFrame(function() {
+                      obj.dispatchEvent(new CustomEvent(name));
+                      running = false;
+                  });
+              };
+              obj.addEventListener(type, func);
+          };
+          throttle ("scroll", "optimizedScroll");
+      })();
+
+      window.addEventListener("optimizedScroll", function() {
+        $('.image-rotate').each(function(){
+          $(this)[0].style.transform = "rotate("+ window.pageYOffset*-1 +"deg)";
+        });
+      });
+
+        // lazyload bg images
+        document.addEventListener('lazybeforeunveil', function(e){
+          var bg = e.target.getAttribute('data-bg');
+          if(bg){
+              e.target.style.backgroundImage = 'url(' + bg + ')';
+          }
+        });
+
       }
     },
     // Home page

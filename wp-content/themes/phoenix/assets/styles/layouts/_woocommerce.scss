@@ -1,0 +1,95 @@
+.add_to_cart_button,
+.woocommerce button.button.alt,
+.woocommerce a.button.alt,
+.woocommerce a.button {
+  color: $black;
+  @include rem(18);
+  line-height: 2rem;
+  letter-spacing: .1em;
+  background-color: transparent;
+  text-transform: uppercase;
+  padding: 0;
+  &:hover {
+    background-color: transparent;
+    color: $black;
+  }
+}
+
+.woocommerce div.product form.cart div.quantity {
+  margin-right: 5px;
+}
+
+
+form.woocommerce-ordering,
+.woocommerce-result-count {
+  display: none;
+}
+
+.product_meta {
+  span {
+    display: block;
+  }
+}
+
+// cart in header.
+.cart-nav {
+  // hide it on the cart and checkout pages
+  .woocommerce-checkout &,
+  .woocommerce-cart & {
+    display: none;
+  }
+  .cart-count {
+    @include color('light');
+    font-family: $font-family-headline;
+    @include rem(25);
+    text-align: left;
+    display: inline-block;
+    width: 85px;
+    position: relative;
+    &:after {
+      content: "";
+      background-image: url('../images/cart.png');
+      background-repeat: no-repeat;
+      width: 40px;
+      height: 40px;
+      position: absolute;
+      right: 15px;
+    }
+  }
+}
+
+
+.woocommerce #content div.product div.images,
+.woocommerce div.product div.images,
+.woocommerce-page #content div.product div.images,
+.woocommerce-page div.product div.images,
+.woocommerce-page #content div.product div.summary, .woocommerce-page div.product div.summary {
+  width: 100% !important;
+  float: none;
+}
+
+//fluid image for single image layout
+.woocommerce div.product div.images img.single-img {
+  margin: 0 auto;
+  display: block;
+  width: auto;
+}
+
+//checkout button
+.woocommerce #respond input#submit.alt,
+.woocommerce a.button.alt,
+.woocommerce button.button.alt,
+.woocommerce input.button.alt {
+  @include color('dark');
+  @extend .h3;
+  float: right;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  &:hover {
+    @include color('dark');
+    background-color: transparent;
+    text-decoration: underline;
+  }
+}

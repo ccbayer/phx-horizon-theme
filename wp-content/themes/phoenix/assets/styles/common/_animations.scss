@@ -1,20 +1,38 @@
-.slide-down {
+// animations
+.slide-down-animate {
   animation: .5s ease-in-out slide-down forwards;
 }
 
-.slide-up {
+.slide-up-animate  {
   animation: .5s ease-in-out slide-up forwards;
 }
 
-.slide-up-30 {
+.slide-up-30-animate  {
   animation: .5s ease-in-out slide-up-30 forwards;
 }
 
-.fade-in {
+.fade-in-animate-animate {
   opacity: 0;
   animation: .5s ease-in-out fade-in forwards;
 }
 
+// transitions
+.slide-down {
+  opacity: 0;
+  top: -90px;
+  transition: all .5s ease-in-out;
+  &.slid-down {
+    opacity: 1;
+    top: 0;
+  }
+}
+.fade-in {
+  opacity: 0;
+  transition: opacity .5s ease-in-out;
+  &.faded-in {
+    opacity: 1;
+  }
+}
 
 // DELAYS
 $seconds: 0;

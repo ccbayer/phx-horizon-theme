@@ -1,0 +1,22 @@
+<div class="product" id="cart-overlay-{{product_id}}">
+  <div class="product-image">
+    {{{image}}}
+  </div>
+  <div class="row">
+    <div class="col product-details">
+      <span class="product-name">{{title}}</span>
+    </div>
+    <div class="col product-details">
+      <a href="#" class="remove-from-cart" data-product-id="{{product_id}}">Remove from cart</a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <span class="quantity">{{quantity}}</span> Cases
+    </div>
+    <div class="col">
+      <a href="#add" class="ajax-change-quantity" data-dir="add" data-product-id="{{product_id}}">+</a>
+      <a href="#subtract" class="ajax-change-quantity" data-dir="subtract" data-product-id="{{product_id}}">-</a>
+    </div>
+  </div>
+</div>

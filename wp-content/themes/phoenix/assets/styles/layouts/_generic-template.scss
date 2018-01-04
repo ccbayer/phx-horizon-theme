@@ -1,0 +1,41 @@
+section.generic-template {
+  padding: 12rem 0 7.5rem 0;
+  h1{
+    @include color('primary');
+    margin-bottom: 3.125rem;
+  }
+  // with image
+  &.has-featured-image {
+    padding-top: 3.5rem;
+    h1 {
+      margin-top: 3.125rem;
+    }
+  }
+}
+
+
+.body-container {
+  p {
+    @extend p.primary;
+    a {
+      @extend .fancyHover;
+      @include color('primary');
+      &::after {
+        @include background-color-pseudo('primary');
+      }
+      &:hover {
+        @include color('primary');
+        &::after {
+          @include background-color-pseudo('primary');
+        }
+      }
+    }
+  }
+  ul {
+    margin-top: 1.5rem;
+    li {
+      @extend p.primary;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
