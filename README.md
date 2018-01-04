@@ -1,5 +1,8 @@
 # Branches
- Develop:  working Branche
+ Develop: working branch
+ Staging: staging server 
+ Master: prod server
+ 
 # Deployment
 
 1. Add a new remote for the `production` server:
