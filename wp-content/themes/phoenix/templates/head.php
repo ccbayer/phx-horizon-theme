@@ -4,4 +4,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="https://cloud.typography.com/6255894/6780992/css/fonts.css" />
   <?php wp_head(); ?>
+  <script>
+  if (typeof phx == "undefined") {
+
+    var phx = {
+      ajax_url : '<?php echo admin_url( "admin-ajax.php" ); ?>'
+    };
+
+  };
+</script>
 </head>

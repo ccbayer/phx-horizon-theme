@@ -13,3 +13,72 @@
   @extend .btn;
   @extend .btn-secondary;
 }
+
+
+
+// GRAVITY / CONTACT FORMS
+.gform_wrapper {
+  max-width: 768px;
+}
+.gform_wrapper h3.gform_title {
+  @extend .h3;
+  letter-spacing: .2em !important;
+}
+
+.gform_body {
+  label,
+  input,
+  textarea {
+    @include body(primary);
+  }
+}
+
+.gform_wrapper input:not([type='radio']):not([type='checkbox']):not([type='submit']):not([type='button']):not([type='image']):not([type='file']) {
+  width: 100%;
+  @include media-breakpoint-up(sm) {
+    width: 70%;
+  }
+}
+
+.gform_body input,
+.gform_body textarea {
+  border-width: 1px;
+  border-style: solid;
+  @include border-color('dark');
+}
+
+.gform_wrapper label.gfield_label {
+  @include body(primary);
+}
+
+.gform_body {
+  padding: 1.5rem 0;
+}
+.gform_wrapper .gform_footer:not(.top_label) {
+  margin-top: -100px;
+}
+.gform_wrapper .gform_footer input[type=submit] {
+  @extend .h3;
+  float: right;
+  background-color: transparent;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+// left-aligned captcha
+.gform_wrapper ul.gform_fields:not(.top_label) .ginput_container.ginput_recaptcha {
+  margin-left: 0 !important;
+}
+
+.ginput_recaptcha + .gfield_description {
+  margin-left: 0 !important;
+  padding: 2rem 0;
+}
+
+.gform_confirmation_message {
+  @extend .body-1;
+}

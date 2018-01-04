@@ -7,6 +7,9 @@ h1 {
     font-family: $font-family-headline;
     font-weight: 400;
   }
+  @include media-breakpoint-down(md) {
+    @include rem(75);
+  }
 }
 
 h2,
@@ -15,6 +18,9 @@ h2,
   font-family: $font-family-headline;
   letter-spacing: .2em;
   text-transform: uppercase;
+  @include media-breakpoint-down(lg) {
+    @include rem(35);
+  }
 }
 
 h3,
@@ -30,25 +36,73 @@ h4 {
 }
 
 p {
-  @include rem(15);
-  font-family: $font-family-body;
-  line-height: (25/15);
-  letter-spacing: .1em;
-  font-weight: 400;
-  font-style: normal;
+  @include body;
   &.primary {
-    @include rem(25);
-    line-height: (35/25);
+    @include body(primary);
   }
   &.secondary {
-    @include rem(18);
+    @include body(secondary);
   }
   &.tertiary {
-    @include rem(25);
-    line-height: (35/25);
-    letter-spacing: normal;
+    @include body(tertiary);
   }
 }
+
+// seven body styles
+// body 1
+// Gotham Book 25pt/35pt
+// 100 spacing
+
+body,
+body .body-container  {
+  .body-1 {
+    // body 1
+    // Gotham Book 25pt/35pt
+    // 100 spacing
+    @include body-copy(25, (35/25), $font-family-body, 400, normal, .1em);
+    margin-bottom: 3.124rem;
+  }
+  // body 2
+  // Gotham Book 15/25pt
+  // 100 spacing
+  .body-2 {
+    @include body-copy(15, (15/25), $font-family-body, 400, normal, .1em);
+  }
+  //body 3
+  // Gotham Bold 25pt
+  .body-3 {
+    @include body-copy(25, (15/25), $font-family-body, 800);
+  }
+  //body 4
+  // Gotham Book 18pt
+  // 100 spacing
+  .body-4 {
+    @include body-copy(18, 1.25, $font-family-body, 400, normal, .1em);
+  }
+  p.body-4 {
+    margin-bottom: 2rem;
+  }
+  // body 5
+  // Gotham bold 18pt
+  .body-5 {
+    @include body-copy(18, 1.25, $font-family-body, 800, normal, .1em);
+  }
+  p.body-5 {
+    margin-bottom: 2rem;
+  }
+  // Body 6
+  // Pressura regular 15pt 100 spacing
+  .body-6 {
+    @include body-copy(15, 1.25, $font-family-headline, 400, normal, .1em);
+  }
+  // Body 7
+  // Pressura regular 10pt 100 spacing
+  .body-6 {
+    @include body-copy(10, 1.25, $font-family-headline, 400, normal, .1em);
+  }
+
+}
+
 
 // primary cta
 a.btn-primary {

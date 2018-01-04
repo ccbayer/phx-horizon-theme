@@ -1,12 +1,35 @@
-<header class="banner slide-down delay-2">
+<?php
+  //
+  use Roots\Sage\Extras;
+  $logo = get_field('logo', 'options');
+?>
+<header class="banner" id="header">
   <div class="container">
-    <a class="brand" href="<?= esc_url(home_url('/')); ?>"><img class="logo fade-in delay-2-point-5" src="<?= get_stylesheet_directory_uri(); ?>/dist/images/logo.png" alt="<?php bloginfo('name'); ?>"/></a>
-    <nav class="nav-primary">
-      <?php
-      if (has_nav_menu('primary_navigation')) :
-        wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);
-      endif;
-      ?>
-    </nav>
+    <div class="row">
+      <div class="brand-col">
+        <a class="brand" href="<?= esc_url(home_url('/')); ?>">
+          <img class="logo" src="<?= $logo['url'] ?? ''?>" alt="<?php bloginfo('name'); ?>"/>
+        </a>
+      </div>
+      <div class="nav-col text-right">
+        <div class="cart-nav">
+          <?php
+          Extras\sk_wcmenucart();
+          ?>
+        </div>
+    </div>
   </div>
+  <nav class="nav-primary">
+    <div class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <?php
+    if (has_nav_menu('primary_navigation')) :
+      wp_nav_menu(['theme_location' => 'primary_navigation', 'menu_class' => 'nav']);
+    endif;
+    ?>
+  </nav>
+  <?php get_template_part('templates/cart-overlay'); ?>
 </header>

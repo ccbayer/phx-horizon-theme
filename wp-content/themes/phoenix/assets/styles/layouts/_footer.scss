@@ -34,6 +34,7 @@ footer {
       ul {
         li {
           margin-bottom: 2rem;
+          width: 100%;
           a {
             @extend .h3;
           }
@@ -56,6 +57,17 @@ footer {
     small {
       display: block;
       margin-bottom: 1.125rem;
+      text-align: center;
+    }
+    img.logo {
+      max-width: 100%;
+      width: auto;
+      margin-bottom: 2rem;
+      @include media-breakpoint-up(sm) {
+        max-width: 100%;
+        width: auto;
+        height: auto;
+      }
     }
   }
 }

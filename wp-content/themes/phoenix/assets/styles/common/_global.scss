@@ -2,10 +2,26 @@ body {
   @include color('dark');
 }
 
-$section-padding: 7.5rem;
+$section-padding: 5.5rem;
 section {
   padding-top: $section-padding;
   padding-bottom: $section-padding;
+}
+
+.lazyload,
+.lazyloading {
+  opacity: 0;
+}
+
+.lazyloaded {
+  opacity: 1;
+  transition: opacity .3s ease-out;
+}
+
+
+
+[data-animate="true"] {
+  position: relative;
 }
 
 .animated {
@@ -56,11 +72,15 @@ a {
   @include background-color('secondary');
 }
 
+.cta-wrapper {
+  padding-top: 1.5rem;
+}
 
 /*
 ** FancyHover Links
 */
 a.fancyHover {
+  text-transform: uppercase;
   position: relative;
   text-decoration: none;
   &::after {
@@ -70,9 +90,7 @@ a.fancyHover {
     bottom: -5px;
     height: 2px;
     transform: scaleX(0);
-    animation: fancyHoverOut .8s 0s 1 cubic-bezier(.645, .045, .355, 1) both;
     width: 100%;
-
   }
   &:hover {
     text-decoration: none;
@@ -81,6 +99,13 @@ a.fancyHover {
     }
   }
 }
+
+.fh-hovered {
+  &:after {
+    animation: fancyHoverOut .8s 0s 1 cubic-bezier(.645, .045, .355, 1) both;
+  }
+}
+
 @keyframes fancyHover {
     0% {
         transform-origin: left center;
@@ -110,4 +135,28 @@ a.fancyHover {
         transform-origin: left center;
         transform: scaleX(0)
     }
+}
+
+
+a[href^="mailto:"]{
+
+  /* These are technically the same, but use both */
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  -ms-word-break: break-all;
+  /* This is the dangerous one in WebKit, as it breaks things wherever */
+  word-break: break-all;
+  /* Instead use this non-standard one: */
+  word-break: break-word;
+
+  /* Adds a hyphen where the word breaks, if supported (No Blink) */
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+
+}
+.xe-deprecated {
+  display: none !important;
 }
