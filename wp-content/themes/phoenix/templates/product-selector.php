@@ -68,7 +68,7 @@ endforeach;
         else:
           $hide = false;
         endif;
-		$thisCat = get_term_by('id', $value['product_category'], 'product_cat');
+        $thisCat = get_term_by('id', $value['product_category'], 'product_cat');
       ?>
       <div class="row justify-content-center product-container <?= $hide ?>" id="<?= $thisCat->slug ?>">
         <?php
