@@ -52,7 +52,7 @@ endforeach;
             <ul class="selector-list">
               <?php foreach($product_module['products'] as $key=>$value): ?>
                 <?php
-                  $thisCat = get_category($value['product_category']);
+                  $thisCat = get_term_by('id', $value['product_category'], 'product_cat');
                 ?>
                 <li <?= $key > 0 ? 'class="selected"' : '' ?>><a href="#<?= $thisCat->slug ?>"><?= $thisCat->name ?></a></li>
               <?php endforeach ?>
@@ -68,7 +68,7 @@ endforeach;
         else:
           $hide = false;
         endif;
-        $thisCat = get_category($value['product_category']);
+        $thisCat = get_term_by('id', $value['product_category'], 'product_cat');
       ?>
       <div class="row justify-content-center product-container <?= $hide ?>" id="<?= $thisCat->slug ?>">
         <?php
@@ -76,7 +76,7 @@ endforeach;
         ?>
         <div class="col-md-4">
           <figure class="product-figure-loop">
-            <a rel="nofollow" href="/cart/?add-to-cart=<?= $prod->ID ?>" data-quantity="1" data-product_id="<?= $prod->ID ?>" data-product_sku="">
+            <a rel="nofollow" href="<?= get_permalink($prod->ID);?>">
               <img class="product-shot" src="<?= get_the_post_thumbnail_url($prod->ID) ?>" alt=""/>
             </a>
             <figcaption>

@@ -106,7 +106,7 @@ get_header( 'shop' ); ?>
            ?>
             <div class="col-md-4">
               <figure>
-                <a rel="nofollow" href="/cart/?add-to-cart=<?= $id ?>" data-quantity="1" data-product_id="<?= $id ?>" data-product_sku="">
+                <a href="<?= get_permalink(); ?>">
                   <img class="product-shot" src="<?= $image['url']; ?>" alt=""/>
                 </a>
                 <figcaption>
