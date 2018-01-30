@@ -431,3 +431,6 @@ function sk_wcmenucart() {
 	echo $social;
 
 }
+
+// gravity forms hooks and config
+add_filter( 'gform_confirmation_anchor', '__return_true' );
