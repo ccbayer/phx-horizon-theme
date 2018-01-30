@@ -39,11 +39,26 @@
           endif;
         ?>
       </div>
+      <?php
+        $branding = get_field('footer_branding', 'options');
+        if($branding):
+      ?>
       <div class="row">
         <div class="col text-center footer-logo">
-          <a href="http://www.phoenixclosures.com" target="_blank"><img src="<?= get_stylesheet_directory_uri(); ?>/dist/images/phoenix-logo.gif" alt="Phoenix"/></a>
+          <?php if($branding['link']): ?>
+          <a href="<?= $branding['link']['url'] ?>" target="<?= $branding['link']['target'] ?>">
+          <?php endif; ?>
+            <?php if($branding['image']): ?>
+            <img src="<?= $branding['image']['url'] ?>" alt="<?= $branding['image']['alt'] ?>"/>
+          <?php elseif($branding['link']): ?>
+            <?= $branding['link']['title']; ?>
+          <?php endif; ?>
+          <?php if($branding['link']): ?>
+          </a>
+          <?php endif ?>
         </div>
       </div>
+      <?php endif; ?>
       <div class="row">
         <div class="col text-center">
           <?php
