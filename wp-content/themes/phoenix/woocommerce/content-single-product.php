@@ -41,7 +41,7 @@ if ( ! defined( 'ABSPATH' ) ) {
      <div class="container">
        <div class="row">
          <div class="col text-center">
-              <?php get_template_part('templates/page', 'header'); ?>
+              <?php get_template_part('templates/page', 'header-product'); ?>
           </div>
         </div>
         <div class="row">

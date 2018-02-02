@@ -92,4 +92,44 @@ form.woocommerce-ordering,
     background-color: transparent;
     text-decoration: underline;
   }
+  &.left {
+    float: left;
+  }
+  &.padding-none {
+    padding: 0;
+  }
+}
+
+// checkout
+.checkout {
+  p,
+  label {
+    font-size: 18px;
+  }
+  label {
+    margin-bottom: 4px;
+  }
+  .form-row-wide {
+    margin-top: 15px;
+  }
+  #order_review_heading {
+    margin-top: 20px;
+  }
+}
+.woocommerce #payment .terms,
+.woocommerce #payment .wc-terms-and-conditions,
+.woocommerce-page #payment .terms,
+.woocommerce-page #payment .wc-terms-and-conditions {
+  float: none;
+  width: 100%;
+}
+
+// page header
+.page-header-product h1 {
+  font-size: 32px !important;
+}
+
+// admin
+.woocommerce-form__input-checkbox {
+  padding: 0 2rem;
 }
