@@ -79,7 +79,9 @@ form.woocommerce-ordering,
 .woocommerce #respond input#submit.alt,
 .woocommerce a.button.alt,
 .woocommerce button.button.alt,
-.woocommerce input.button.alt {
+.woocommerce input.button.alt,
+.shipping-calculator-button
+ {
   @include color('dark');
   @extend .h3;
   float: right;
@@ -129,7 +131,26 @@ form.woocommerce-ordering,
   font-size: 32px !important;
 }
 
-// admin
+// / account page admin
 .woocommerce-form__input-checkbox {
   padding: 0 2rem;
+}
+.woocommerce-MyAccount-navigation {
+  ul {
+    list-style-type: none;
+    li {
+      border-bottom: 1px solid #999;
+    }
+  }
+}
+.woocommerce-MyAccount-navigation-link.is-active {
+  border-bottom-style: solid;
+  border-bottom-width: 3px;
+  @include border-color('primary');
+}
+
+tr.shipping {
+  label {
+    font-size: 14px;
+  }
 }
