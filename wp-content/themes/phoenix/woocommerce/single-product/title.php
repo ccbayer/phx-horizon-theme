@@ -19,5 +19,5 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-fff
+
 the_title( '<h1 class="product_title entry-title">', '</h1>' );
