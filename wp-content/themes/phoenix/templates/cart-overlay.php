@@ -44,10 +44,6 @@ if($woocommerce->cart->cart_contents_count === 0) {
                 <div class="col">
                   <span class="quantity"><?= $item['quantity']; ?></span> Case<?= $item['quantity'] > 1 ? 's' : '' ?>
                 </div>
-                <div class="col">
-                  <a href="#add" class="ajax-change-quantity" data-dir="add" data-product-id="<?= $item['product_id'] ?>">+</a>
-                  <a href="#subtract" class="ajax-change-quantity" data-dir="subtract" data-product-id="<?= $item['product_id'] ?>">-</a>
-                </div>
               </div>
             </div>
           <?php endforeach;?>
@@ -60,6 +56,7 @@ if($woocommerce->cart->cart_contents_count === 0) {
       <a href="#" class="hide-cart-overlay">close</a>
     </div>
     <div class="col text-right">
+      <a class="btn-checkout px-4" href="<?= wc_get_checkout_url() ?>">View Cart</a>
       <a class="btn-checkout" href="<?= wc_get_checkout_url() ?>">Checkout</a>
     </div>
   </div>
