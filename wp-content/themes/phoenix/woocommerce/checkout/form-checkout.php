@@ -35,7 +35,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 
   <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
     <div class="row">
-      <div class="col text-align-left py-4"><a class="button alt left padding-none mb-4" href="<?= wc_get_checkout_url() ?>">Back to Cart</a></div>
+      <div class="col text-align-left py-4"><a class="button alt left padding-none mb-4" href="<?= wc_get_cart_url() ?>">Back to Cart</a></div>
     </div>
   	<?php if ( $checkout->get_checkout_fields() ) : ?>
 
