@@ -95,13 +95,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php else : ?>
 				<tr class="tax-total">
 					<th><?php echo esc_html( WC()->countries->tax_or_vat() ); ?></th>
-					<td><?php wc_cart_totals_taxes_total_html(); ?></td>
+					<td>
+						<?php // before: wc_cart_totals_taxes_total_html(); ?>
+						<?= wc_price( WC()->cart->get_total_tax( true, true )); ?>
+					</td>
 				</tr>
 			<?php endif; ?>
 		<?php endif; ?>
 
 		<?php do_action( 'woocommerce_review_order_before_order_total' ); ?>
-
 		<tr class="order-total">
 			<th><?php _e( 'Total', 'woocommerce' ); ?></th>
 			<td><?php wc_cart_totals_order_total_html(); ?></td>
