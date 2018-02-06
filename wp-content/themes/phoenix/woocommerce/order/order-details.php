@@ -28,10 +28,11 @@ $show_customer_details = is_user_logged_in() && $order->get_user_id() === get_cu
 ?>
 
 <section class="woocommerce-order-details">
-
+  <div class="py-3">
+      <p><?php the_field('order_note', 'options'); ?></p>
+  </div>
 	<h2 class="woocommerce-order-details__title"><?php _e( 'Order details', 'woocommerce' ); ?></h2>
-
-	<table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
+  <table class="woocommerce-table woocommerce-table--order-details shop_table order_details">
 
 		<thead>
 			<tr>

@@ -54,7 +54,9 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
   		<?php do_action( 'woocommerce_checkout_after_customer_details' ); ?>
 
   	<?php endif; ?>
-
+    <div class="py-3">
+        <p><?php the_field('order_note', 'options'); ?></p>
+    </div>
   	<h3 id="order_review_heading"><?php _e( 'Your order', 'woocommerce' ); ?></h3>
 
   	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
