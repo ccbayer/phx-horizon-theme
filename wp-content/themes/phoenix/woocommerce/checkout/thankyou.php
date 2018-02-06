@@ -55,6 +55,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<li class="woocommerce-order-overview__total total">
 					<?php _e( 'Total:', 'woocommerce' ); ?>
 					<strong><?php echo $order->get_formatted_order_total(); ?></strong>
+          <strong><?php echo wc_cart_totals_order_total_html(); ?></strong>
+
 				</li>
 
 				<?php if ( $order->get_payment_method_title() ) : ?>
