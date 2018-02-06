@@ -62,5 +62,7 @@ do_action( 'woocommerce_email_before_order_table', $order, $sent_to_admin, $plai
 		?>
 	</tfoot>
 </table>
-
+<div class="py-3">
+    <p><?php the_field('order_note', 'options'); ?></p>
+</div>
 <?php do_action( 'woocommerce_email_after_order_table', $order, $sent_to_admin, $plain_text, $email ); ?>
