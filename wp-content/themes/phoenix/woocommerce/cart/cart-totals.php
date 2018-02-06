@@ -23,6 +23,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 ?>
 <div class="cart_totals <?php echo ( WC()->customer->has_calculated_shipping() ) ? 'calculated_shipping' : ''; ?>">
 
+  <div class="py-3">
+      <p><?php the_field('order_note', 'options'); ?></p>
+  </div>
+
 	<?php do_action( 'woocommerce_before_cart_totals' ); ?>
 
 	<h2><?php _e( 'Cart totals', 'woocommerce' ); ?></h2>
@@ -83,8 +87,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<th><?php echo esc_html( WC()->countries->tax_or_vat() ) . $estimated_text; ?></th>
 					<td data-title="<?php echo esc_attr( WC()->countries->tax_or_vat() ); ?>">
             <?php wc_cart_totals_taxes_total_html(); ?>
-						<?= // proof of concept to show the taxes with discount
-            // wc_price( WC()->cart->get_total_tax( true, true )); ?>
+						<?php
+						/* proof of concept to show the taxes with discount */
+            /* wc_price( WC()->cart->get_total_tax( true, true )); */
+						?>
           </td>
 				</tr>
 			<?php endif; ?>
