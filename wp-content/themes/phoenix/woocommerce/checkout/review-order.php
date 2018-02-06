@@ -96,8 +96,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<tr class="tax-total">
 					<th><?php echo esc_html( WC()->countries->tax_or_vat() ); ?></th>
 					<td>
-						<?php // before: wc_cart_totals_taxes_total_html(); ?>
-						<?= wc_price( WC()->cart->get_total_tax( true, true )); ?>
+						<?php wc_cart_totals_taxes_total_html(); ?>
+            <?= // proof of concept to show the taxes with discount
+            // wc_price( WC()->cart->get_total_tax( true, true )); ?>
 					</td>
 				</tr>
 			<?php endif; ?>
